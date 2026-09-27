@@ -105,10 +105,8 @@ class BlurSettings : Fragment() {
         val context = LocalContext.current
         val cr = context.contentResolver
 
-        val blurEnabledByDefault = SystemProperties.getBoolean("ro.custom.blur.enable", false)
-
         var blursEnabled by remember {
-            mutableStateOf(Settings.Global.getInt(cr, Settings.Global.DISABLE_WINDOW_BLURS, if (blurEnabledByDefault) 0 else 1) == 0)
+            mutableStateOf(Settings.Global.getInt(cr, Settings.Global.DISABLE_WINDOW_BLURS, 1) == 0)
         }
 
         var blurRadiusPct by remember {
